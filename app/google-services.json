@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "570091153823",
+    "project_id": "agrolink-1f19b",
+    "storage_bucket": "agrolink-1f19b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570091153823:android:609496e0ef2428499bf5aa",
+        "android_client_info": {
+          "package_name": "com.example.agrolink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "570091153823-edkdq6h6fgpif7galor8dlsbh9rhnmho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agrolink",
+            "certificate_hash": "11e25926505055a6baadd24316ec13600adb19b2"
+          }
+        },
+        {
+          "client_id": "570091153823-a0ho50nvs0ddmka89qhhg1qhs4knd15g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG8BHL6YQfRvxk7KMt_Lc8c9ulLlRRzx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "570091153823-a0ho50nvs0ddmka89qhhg1qhs4knd15g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
