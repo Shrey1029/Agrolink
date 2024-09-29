@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Header with profile name and edit button -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Profile Name -->
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Farmer Profile"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- Edit Button -->
+        <Button
+            android:id="@+id/edit_profile_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/green"
+            android:padding="8dp"
+            android:text="Edit"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Profile Picture -->
+
+    <!-- Farmer Details -->
+
+    <LinearLayout
+        android:layout_width="392dp"
+        android:layout_height="244dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="279dp"
+            android:layout_height="242dp"
+            android:background="@drawable/gradient_background"
+            android:contentDescription="Farmer Profile Image"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/lightGreen"
+        android:backgroundTint="@color/lightGreen"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <!-- Farmer Name -->
+        <TextView
+            android:id="@+id/farmerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="Name: Charanjeet"
+            android:textColor="@color/textPrimary"
+            android:textSize="18sp" />
+
+        <!-- Farmer Age -->
+        <TextView
+            android:id="@+id/farmerAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="Age: 45"
+            android:textColor="@color/textPrimary"
+            android:textSize="18sp" />
+
+        <!-- Farmer Location -->
+        <TextView
+            android:id="@+id/farmerLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="Location: Punjab, India"
+            android:textColor="@color/textPrimary"
+            android:textSize="18sp" />
+
+        <!-- Farmer Experience -->
+        <TextView
+            android:id="@+id/farmerExperience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="Experience: 20 years"
+            android:textColor="@color/textPrimary"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <!-- Remove the action buttons -->
+</LinearLayout>

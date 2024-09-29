@@ -10,14 +10,12 @@
     tools:context=".MainActivity">
 
     <!-- Toolbar -->
-
-    <!-- GridLayout for Buttons -->
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginTop="0dp"
-        android:background="@color/green">
+        android:layout_height="58dp"
+        android:background="@color/colorPrimary"
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/menuIcon"
@@ -25,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="16dp"
             android:src="@drawable/ic_menu" />
 
         <ImageView
@@ -34,234 +32,250 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="16dp"
             android:src="@drawable/ic_search" />
     </RelativeLayout>
 
-    <!-- Floating Action Button -->
-    <GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="383dp"
-        android:layout_height="492dp"
-        android:layout_margin="15dp"
+    <!-- GridLayout for Buttons with Background -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:columnCount="2"
-        android:rowCount="4">
+        android:padding="8dp"
+        android:background="@color/buttonBackground"> <!-- Background for GridLayout -->
 
-        <!-- Inventory Button -->
-        <LinearLayout
-            android:layout_width="0dp"
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="10dp"
-            android:background="@color/Lightgreen"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:columnCount="2"
+            android:rowCount="4"
+            android:padding="8dp"
+            android:background="@color/gridBackground"> <!-- Background for GridItems -->
 
-            <ImageView
-                android:id="@+id/invenicon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_inventory" />
-
-            <TextView
-                android:id="@+id/inventory"
-                android:layout_width="wrap_content"
+            <!-- Inventory Button -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_background"
                 android:gravity="center"
-                android:text="Inventory"
-                android:textColor="@color/textPrimary"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <!-- Quality Check Button -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="10dp"
-            android:background="@color/Lightgreen"
-            android:gravity="center"
-            android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/invenicon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_inventory" />
 
-            <ImageView
-                android:id="@+id/tickicon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_quality_check" />
+                <TextView
+                    android:id="@+id/inventory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Inventory"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/quality"
-                android:layout_width="wrap_content"
+            <!-- Quality Check Button -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_background"
                 android:gravity="center"
-                android:text="Quality Check"
-                android:textColor="@color/textPrimary"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <!-- Orders Button -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="10dp"
-            android:background="@color/Lightgreen"
-            android:gravity="center"
-            android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/tickicon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_quality_check" />
 
-            <ImageView
-                android:id="@+id/ordericon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_orders" />
+                <TextView
+                    android:id="@+id/quality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Quality Check"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/order"
-                android:layout_width="wrap_content"
+            <!-- Orders Button -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_background"
                 android:gravity="center"
-                android:text="Orders"
-                android:textColor="@color/textPrimary"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <!-- Information Button -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="10dp"
-            android:background="@color/Lightgreen"
-            android:gravity="center"
-            android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/ordericon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_orders" />
 
-            <ImageView
-                android:id="@+id/infoicon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_info" />
+                <TextView
+                    android:id="@+id/cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Orders"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/info"
-                android:layout_width="wrap_content"
+            <!-- Information Button -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_background"
                 android:gravity="center"
-                android:text="Information"
-                android:textColor="@color/textPrimary"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <!-- Weather Button -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="10dp"
-            android:background="@color/Lightgreen"
-            android:gravity="center"
-            android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/infoicon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_info" />
 
-            <ImageView
-                android:id="@+id/weathericon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_weather" />
+                <TextView
+                    android:id="@+id/info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Information"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/weather"
-                android:layout_width="wrap_content"
+            <!-- Weather Button -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_background"
                 android:gravity="center"
-                android:text="Weather"
-                android:textColor="@color/textPrimary"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <!-- Profile Button -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="10dp"
-            android:background="@color/Lightgreen"
-            android:gravity="center"
-            android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/weathericon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_weather" />
 
-            <ImageView
-                android:id="@+id/profileicon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_profile" />
+                <TextView
+                    android:id="@+id/weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Weather"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/profile"
-                android:layout_width="wrap_content"
+            <!-- Profile Button -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_background"
                 android:gravity="center"
-                android:text="Profile"
-                android:textColor="@color/textPrimary"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <!-- Map Button -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="10dp"
-            android:background="@color/Lightgreen"
-            android:gravity="center"
-            android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/profileicon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_profile" />
 
-            <ImageView
-                android:id="@+id/mapicon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_map" />
+                <TextView
+                    android:id="@+id/profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Profile"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/map"
-                android:layout_width="wrap_content"
+            <!-- Map Button -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_background"
                 android:gravity="center"
-                android:text="Map"
-                android:textColor="@color/textPrimary"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <!-- Sign Out Button -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="10dp"
-            android:background="@color/Lightgreen"
-            android:gravity="center"
-            android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/mapicon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_map" />
 
-            <ImageView
-                android:id="@+id/signicon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_signout" />
+                <TextView
+                    android:id="@+id/map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Map"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/signout"
-                android:layout_width="wrap_content"
+            <!-- Sign Out Button -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_background"
                 android:gravity="center"
-                android:text="Sign out"
-                android:textColor="@color/textPrimary"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </GridLayout>
+                android:orientation="vertical">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/green"
-        android:src="@drawable/ic_add" />
+                <ImageView
+                    android:id="@+id/signicon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_signout" />
+
+                <TextView
+                    android:id="@+id/signout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Sign Out"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </GridLayout>
+    </RelativeLayout>
 </LinearLayout>

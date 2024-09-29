@@ -1,4 +1,4 @@
-package com.example.agrolink
+package com.example.agrolink.signing
 
 import android.content.Intent
 import android.graphics.Color
@@ -8,7 +8,11 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.agrolink.R
 import com.example.agrolink.databinding.ActivityLoginpageBinding
+import com.example.agrolink.mainConsumer.consumerFront
+import com.example.agrolink.mainfarmer.FrontpageActivity
+import com.example.agrolink.signing.SignUpActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -24,17 +28,21 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var googleSignInResultLauncher: ActivityResultLauncher<Intent>
+    private var role: String? = null  // To hold the role
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginpageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Retrieve the role (Farmer or Consumer) passed from MainActivity
+        role = intent.getStringExtra("ROLE")
+
         // Customize Google Sign-In button
         val textOfGoogleButton = binding.signInButton.getChildAt(0) as TextView
         textOfGoogleButton.text = "Continue with Google"
         textOfGoogleButton.setTextColor(Color.WHITE)
-        textOfGoogleButton.textSize = 18F
+        textOfGoogleButton.textSize = 16F
 
         // Initialize Google Sign-In options
         signInGoogle()
@@ -54,13 +62,11 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             val emailText = binding.email.text.toString()
             val passwordText = binding.password.text.toString()
-            // Handle email/password login
+
             firebaseAuth.signInWithEmailAndPassword(emailText, passwordText).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Navigate to FrontpageActivity on successful login
-                    val intent = Intent(this, FrontpageActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    // Navigate to the appropriate page based on role
+                    navigateBasedOnRole()
                 } else {
                     Toast.makeText(applicationContext, task.exception?.localizedMessage, Toast.LENGTH_SHORT).show()
                 }
@@ -70,6 +76,7 @@ class LoginActivity : AppCompatActivity() {
         // Set click listener for register text
         binding.registerText.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
+            intent.putExtra("ROLE", role)  // Pass role to the sign-up page
             startActivity(intent)
         }
 
@@ -77,6 +84,19 @@ class LoginActivity : AppCompatActivity() {
         binding.signInButton.setOnClickListener {
             signInWithGoogle()
         }
+    }
+
+    private fun navigateBasedOnRole() {
+        if (role == "Farmer") {
+            // Navigate to Farmer Dashboard
+            val intent = Intent(this, FrontpageActivity::class.java)
+            startActivity(intent)
+        } else {
+            // Navigate to Consumer Dashboard
+            val intent = Intent(this, consumerFront::class.java)
+            startActivity(intent)
+        }
+        finish()
     }
 
     private fun signInGoogle() {
@@ -98,12 +118,8 @@ class LoginActivity : AppCompatActivity() {
             val account = task.getResult(ApiException::class.java)
             Toast.makeText(applicationContext, "Welcome to AgroLink", Toast.LENGTH_SHORT).show()
 
-            // Navigate to FrontpageActivity on successful Google Sign-In
-            val intent = Intent(this, FrontpageActivity::class.java)
-            startActivity(intent)
-            finish()
-
             firebaseGoogleAccount(account)
+            navigateBasedOnRole()  // Navigate after Google sign-in
         } catch (e: ApiException) {
             Toast.makeText(applicationContext, e.localizedMessage, Toast.LENGTH_SHORT).show()
         }
@@ -114,8 +130,7 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 // Handle successful sign-in
-                val user = firebaseAuth.currentUser
-                // Update UI with the signed-in user's information, if needed
+                navigateBasedOnRole()
             } else {
                 Toast.makeText(applicationContext, "Sign-in failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }

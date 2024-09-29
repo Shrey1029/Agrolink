@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base Colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Green Shades -->
     <color name="Lightgreen">#04B13E</color>
-    <color name="Overlay">#80D4E6</color>
-        <!-- Primary Green -->
-        <color name="green">#4CAF50</color>
+    <color name="green">#4CAF50</color> <!-- Primary Green -->
+    <color name="lightGreen">#C8E6C9</color> <!-- Light Green -->
+    <color name="darkGreen">#2C6B2F</color> <!-- Dark Green -->
 
-        <!-- Light Green -->
-        <color name="lightGreen">#C8E6C9</color>
+    <!-- Background Colors -->
+    <color name="background">#F5F5F5</color> <!-- Light Gray -->
+    <color name="buttonBackground">#E8F5E9</color> <!-- Light Teal -->
+    <color name="gridBackground">#FFFFFF</color> <!-- White -->
 
-        <!-- Dark Green -->
-        <color name="darkGreen">#2C6B2F</color>
+    <!-- Text Colors -->
+    <color name="textPrimary">#212121</color> <!-- Dark Gray -->
+    <color name="textSecondary">#757575</color> <!-- Medium Gray -->
+    <color name="card_background">#F5F5F5</color> <!-- Light gray -->
 
-        <!-- Background Colors -->
-        <color name="background">#F5F5F5</color>
-        <color name="buttonBackground">#E8F5E9</color>
+    <!-- Toolbar and FAB Colors -->
+    <color name="toolbarBackground">#004D40</color> <!-- Dark Teal -->
+    <color name="fabBackground">#00796B</color> <!-- Teal Darker -->
 
-        <!-- Text Colors -->
-        <color name="textPrimary">#212121</color>
-        <color name="textSecondary">#757575</color>
+    <!-- Overlay Color -->
+    <color name="Overlay">#80D4E6</color> <!-- Light Blue Overlay -->
+
+    <!-- Primary Color -->
+    <color name="colorPrimary">#009688</color> <!-- Teal -->
+
+    <!-- Accent Color -->
+    <color name="colorAccent">#FFC107</color> <!-- Amber -->
+    <color name="buttonBorder">#FF6F00</color> <!-- Example: Dark Orange -->
+
 </resources>

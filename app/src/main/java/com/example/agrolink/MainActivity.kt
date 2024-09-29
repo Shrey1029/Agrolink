@@ -1,35 +1,34 @@
 package com.example.agrolink
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.example.agrolink.databinding.ActivityMainBinding
+import com.example.agrolink.signing.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var farmerButton: Button
-    lateinit var consumerButton: Button
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        farmerButton = findViewById(R.id.farmer)
-        consumerButton = findViewById(R.id.consumer)
-
-        farmerButton.setOnClickListener {
-            // Navigate to Loginpage when "Farmer" button is clicked
-            navigateToLoginPage()
+        // Handle Farmer button click
+        binding.farmer.setOnClickListener {
+            navigateToLoginPage("Farmer")
         }
 
-        consumerButton.setOnClickListener {
-            // Navigate to Loginpage when "Consumer" button is clicked
-            navigateToLoginPage()
+        // Handle Consumer button click
+        binding.consumer.setOnClickListener {
+            navigateToLoginPage("Consumer")
         }
     }
 
-    private fun navigateToLoginPage() {
+    private fun navigateToLoginPage(role: String) {
         val intent = Intent(this, LoginActivity::class.java)
+        intent.putExtra("ROLE", role)  // Pass the selected role to the LoginActivity
         startActivity(intent)
     }
 }

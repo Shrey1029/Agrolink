@@ -1,11 +1,17 @@
-package com.example.agrolink
+package com.example.agrolink.mainfarmer
+
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.agrolink.signing.LoginActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
+import com.example.agrolink.mainfarmer.Frontpage.Inventory
+import com.example.agrolink.mainfarmer.Profile.ProfileActivity
+import com.example.agrolink.R
+
 
 class FrontpageActivity : AppCompatActivity() {
 
@@ -26,10 +32,7 @@ class FrontpageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main2) // Ensure this matches your XML filename
 
         // Initialize FloatingActionButton
-        fab = findViewById(R.id.fab)
-        fab.setOnClickListener {
-            // Handle FAB click here
-        }
+
 
         // Initialize toolbar buttons
         menuIcon = findViewById(R.id.menuIcon)
@@ -45,7 +48,8 @@ class FrontpageActivity : AppCompatActivity() {
         // Initialize GridLayout buttons
         invenicon = findViewById(R.id.invenicon)
         invenicon.setOnClickListener {
-            // Handle Inventory button click here
+            val intent= Intent(this, Inventory::class.java)
+            startActivity(intent)
         }
 
         tickicon = findViewById(R.id.tickicon)
@@ -70,7 +74,8 @@ class FrontpageActivity : AppCompatActivity() {
 
         profileicon = findViewById(R.id.profileicon)
         profileicon.setOnClickListener {
-            // Handle Profile button click here
+            val intent=Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
 
         mapicon = findViewById(R.id.mapicon)

@@ -2,7 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -15,14 +22,43 @@
         android:theme="@style/Theme.AgroLink"
         tools:targetApi="31">
         <activity
-            android:name=".FrontpageActivity"
+            android:name=".mainConsumer.Profile.MainProfileActivity"
+            android:exported="true" />
+        <!-- Farmer-related Activities -->
+        <activity
+            android:name=".mainfarmer.Profile.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".mainfarmer.Profile.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".mainfarmer.Qualitycheck.MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".mainfarmer.Frontpage.UpdateImageInven"
+            android:exported="false" />
+        <activity
+            android:name=".mainfarmer.Frontpage.AddImage"
+            android:exported="false" />
+        <activity
+            android:name=".mainfarmer.Frontpage.Inventory"
+            android:exported="false" /> <!-- Only one Inventory activity -->
+        <activity
+            android:name=".mainfarmer.FrontpageActivity"
+            android:exported="false" /> <!-- Main App Activity -->
+        <activity
+            android:name=".mainpage.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AgroLink" /> <!-- Consumer-related Activity -->
+        <activity
+            android:name=".mainConsumer.consumerFront"
+            android:exported="false" /> <!-- Authentication Activities -->
+        <activity
+            android:name=".signing.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".signing.LoginActivity"
+            android:exported="false" /> <!-- Launcher Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">

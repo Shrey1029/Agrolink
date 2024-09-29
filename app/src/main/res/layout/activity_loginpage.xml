@@ -19,14 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Logo -->
-
-    <!-- Sign In with Google -->
-
-    <!-- Email Field -->
-
-    <!-- Password Field -->
-
     <View
         android:id="@+id/overlayView"
         android:layout_width="0dp"

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hindi: res/values-hi/strings.xml -->
+<resources>
+    <string name="app_name">एग्रोलिंक</string>
+</resources>
