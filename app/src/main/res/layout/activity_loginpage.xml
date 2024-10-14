@@ -8,6 +8,18 @@
     <!-- Background Image -->
 
     <ImageView
+        android:id="@+id/return_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_return"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:outlineAmbientShadowColor="@color/white"/>
+
+    <ImageView
         android:id="@+id/backgroundImageOverlay"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -21,8 +33,8 @@
 
     <View
         android:id="@+id/overlayView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="411dp"
+        android:layout_height="795dp"
         android:alpha="0.5"
         android:background="@color/Lightgreen"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +42,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/appName"

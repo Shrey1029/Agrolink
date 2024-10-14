@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:backgroundTint="@color/colorPrimary"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_return"
+        android:id="@+id/return_icon"/>
+
+    <!-- Profile Picture -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="208dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+
+        <ImageView
+            android:id="@+id/edit_profile_image"
+            android:layout_width="191dp"
+            android:layout_height="208dp"
+            android:background="@drawable/edittext_background"
+            android:contentDescription="Edit Profile Image"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gradient_background" />
+    </LinearLayout>
+
+    <!-- Edit Consumer Details -->
+    <!-- Edit Consumer Name -->
+    <EditText
+        android:id="@+id/edit_consumer_name"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Name"
+        android:textColor="@color/textPrimary"
+        android:textSize="18sp" />
+
+    <!-- Edit Consumer Age -->
+    <EditText
+        android:id="@+id/edit_consumer_age"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Age"
+        android:textColor="@color/textPrimary"
+        android:textSize="18sp" />
+
+    <!-- Edit Consumer Address -->
+    <EditText
+        android:id="@+id/edit_consumer_address"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Address"
+        android:textColor="@color/textPrimary"
+        android:textSize="18sp" />
+
+    <!-- Edit Consumer Location -->
+    <EditText
+        android:id="@+id/edit_consumer_location"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Location"
+        android:textColor="@color/textPrimary"
+        android:textSize="18sp" />
+
+    <!-- Edit Consumer Phone -->
+    <EditText
+        android:id="@+id/edit_consumer_phone"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Phone Number"
+        android:textColor="@color/textPrimary"
+        android:textSize="18sp"
+        android:inputType="phone" />
+
+    <!-- Edit Consumer Email -->
+    <EditText
+        android:id="@+id/edit_consumer_email"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Email"
+        android:textColor="@color/textPrimary"
+        android:textSize="18sp"
+        android:inputType="textEmailAddress" />
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/save_profile_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/green"
+        android:padding="16dp"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+</LinearLayout>

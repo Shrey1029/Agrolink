@@ -11,9 +11,12 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.agrolink.R
 import com.example.agrolink.databinding.ActivityConsumerFrontBinding
 import com.example.agrolink.databinding.ActivityProfileBinding
+import com.example.agrolink.mainConsumer.Orders.OrdersMain
 import com.example.agrolink.mainConsumer.Profile.MainProfile
 import com.example.agrolink.mainConsumer.Profile.MainProfileActivity
 import com.example.agrolink.mainfarmer.Profile.ProfileActivity
+import com.example.agrolink.signing.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class consumerFront : AppCompatActivity() {
     lateinit var binding: ActivityConsumerFrontBinding
@@ -28,11 +31,28 @@ class consumerFront : AppCompatActivity() {
             // Handle window insets if necessary
             insets
         }
+        binding.invenicon.setOnClickListener{
+            val intent = Intent(this, OrdersMain::class.java)
+            startActivity(intent)
+        }
+        binding.returnIcon.setOnClickListener{
+            finish()
+        }
 
         // Profile button click listener
         binding.profile.setOnClickListener {
             val intent = Intent(this, MainProfileActivity::class.java)
             startActivity(intent)
         }
+        binding.signicon.setOnClickListener{
+            signOut()
+        }
+    }
+    private fun signOut() {
+        FirebaseAuth.getInstance().signOut()
+        // Navigate back to LoginActivity
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

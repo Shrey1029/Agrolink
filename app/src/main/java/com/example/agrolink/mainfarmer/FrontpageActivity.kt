@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.example.agrolink.mainfarmer.Frontpage.Inventory
 import com.example.agrolink.mainfarmer.Profile.ProfileActivity
 import com.example.agrolink.R
+import com.example.agrolink.mainfarmer.Qualitycheck.MainActivity
+import com.example.agrolink.mainfarmer.orders.OrdersMainF
 
 
 class FrontpageActivity : AppCompatActivity() {
@@ -35,7 +37,7 @@ class FrontpageActivity : AppCompatActivity() {
 
 
         // Initialize toolbar buttons
-        menuIcon = findViewById(R.id.menuIcon)
+        menuIcon = findViewById(R.id.returnIcon)
         menuIcon.setOnClickListener {
             // Handle menu icon click here
         }
@@ -54,12 +56,14 @@ class FrontpageActivity : AppCompatActivity() {
 
         tickicon = findViewById(R.id.tickicon)
         tickicon.setOnClickListener {
-            // Handle Quality Check button click here
+            val intent= Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         ordericon = findViewById(R.id.ordericon)
         ordericon.setOnClickListener {
-            // Handle Orders button click here
+            val intent= Intent(this, OrdersMainF::class.java)
+            startActivity(intent)
         }
 
         infoicon = findViewById(R.id.infoicon)

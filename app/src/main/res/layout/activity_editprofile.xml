@@ -4,9 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:backgroundTint="@color/colorPrimary"
+    android:backgroundTint="#FFEBCC"
     android:orientation="vertical"
     android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/return_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/lightGreen"
+        android:src="@drawable/ic_return" />
 
     <!-- Profile Picture -->
     <LinearLayout
@@ -70,6 +77,18 @@
         android:hint="Experience"
         android:textColor="@color/textPrimary"
         android:textSize="18sp" />
+    <!-- Edit Farmer Phone Number -->
+    <EditText
+        android:id="@+id/edit_farmer_phone"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:textColor="@color/textPrimary"
+        android:textSize="18sp" />
+
 
     <!-- Save Button -->
     <Button

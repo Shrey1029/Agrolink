@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     id("androidx.navigation.safeargs.kotlin")
-    id("com.google.firebase.crashlytics")// Add this line
+    id("com.google.firebase.crashlytics") // Add this line
 }
 
 android {
@@ -41,6 +41,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        mlModelBinding = true // Enables ML model binding
     }
 }
 
@@ -69,10 +70,19 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.0")
     implementation("androidx.activity:activity:1.9.2")
-    implementation ("com.squareup.picasso:picasso:2.71828")
-    implementation ("com.github.bumptech.glide:glide:4.15.1")
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
-    implementation ("androidx.cardview:cardview:1.0.0")
+    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation("org.tensorflow:tensorflow-lite-metadata:0.1.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    // TensorFlow Lite dependencies
+    implementation("org.tensorflow:tensorflow-lite:2.14.0")
+    implementation("org.tensorflow:tensorflow-lite-gpu:2.14.0") // Optional based on GPU usage
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.1") // Check for the latest version
+
+    // Remove or comment out the litert-api dependency
+    // implementation("com.google.ai.edge.litert:litert-api:1.0.1")
 
     // Test dependencies
     testImplementation("junit:junit:4.13.2")

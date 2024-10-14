@@ -6,6 +6,11 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     android:padding="16dp">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_return"
+        android:id="@+id/return_icon"/>
 
     <!-- Header with profile name and edit button -->
     <LinearLayout
@@ -69,44 +74,111 @@
 
         <!-- Consumer Name -->
         <TextView
+            android:id="@+id/consumer_name_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/consumerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Name"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
+
+        <!-- Consumer Age -->
+        <TextView
+            android:id="@+id/consumer_age_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Age:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/consumerAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <!-- Consumer Email -->
+        <TextView
+            android:id="@+id/consumer_email_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Email"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <!-- Consumer Location -->
+        <TextView
+            android:id="@+id/consumer_location_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/Location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Location"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
+
+        <!-- Consumer Address -->
+        <TextView
+            android:id="@+id/consumer_address_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <!-- Consumer Phone -->
+        <TextView
+            android:id="@+id/consumer_phone_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/Phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Phone"
             android:textColor="@color/black"
-            android:textSize="18sp" />
-
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

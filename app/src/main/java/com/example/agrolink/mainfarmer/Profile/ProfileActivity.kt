@@ -54,11 +54,11 @@ class ProfileActivity : AppCompatActivity() {
             .addOnSuccessListener { document ->
                 if (document.exists()) {
                     val profile = document.toObject(Profile::class.java)
-                    Log.d("ProfileActivity", "Fetched profile data: $profile")
                     binding.farmerName.text = "Name: ${profile?.name ?: "N/A"}"
                     binding.farmerAge.text = "Age: ${profile?.age ?: "N/A"}"
                     binding.farmerLocation.text = "Location: ${profile?.location ?: "N/A"}"
                     binding.farmerExperience.text = "Experience: ${profile?.experience ?: "N/A"}"
+                    binding.farmerPhone.text = "Phone Number: ${profile?.phoneNumber ?: "N/A"}"  // New phone number field
 
                     // Load profile image
                     val imageUrl = profile?.imageUrl
@@ -69,9 +69,6 @@ class ProfileActivity : AppCompatActivity() {
                     } else {
                         Log.d("ProfileActivity", "No image URL found")
                     }
-                } else {
-                    Log.d("ProfileActivity", "Profile document does not exist")
-                    Toast.makeText(this, "Profile does not exist", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener { exception ->
@@ -79,4 +76,6 @@ class ProfileActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error fetching data", Toast.LENGTH_SHORT).show()
             }
     }
+
+
 }

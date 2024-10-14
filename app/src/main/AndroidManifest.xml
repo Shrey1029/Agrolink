@@ -11,6 +11,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_channel_id"
+        android:value="default_channel" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -21,10 +25,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgroLink"
         tools:targetApi="31">
+
+        <activity
+            android:name=".mainConsumer.FarmerProfile.FarmerProfileActivity"
+        android:exported="true" />  <!-- Adjust 'exported' based on your needs -->
+
+        <activity
+            android:name=".mainConsumer.FarmerProfile"
+            android:exported="false" />
+        <activity
+            android:name=".mainConsumer.Profile.EditConsumerProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mainfarmer.orders.OrdersMainF"
+            android:exported="false" />
+        <activity
+            android:name=".mainConsumer.Orders.OrdersMain"
+            android:exported="false" />
         <activity
             android:name=".mainConsumer.Profile.MainProfileActivity"
-            android:exported="true" />
-        <!-- Farmer-related Activities -->
+            android:exported="true" /> <!-- Farmer-related Activities -->
         <activity
             android:name=".mainfarmer.Profile.EditProfileActivity"
             android:exported="false" />
@@ -64,7 +84,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -84,6 +84,9 @@ class LoginActivity : AppCompatActivity() {
         binding.signInButton.setOnClickListener {
             signInWithGoogle()
         }
+        binding.returnIcon.setOnClickListener{
+            finish()
+        }
     }
 
     private fun navigateBasedOnRole() {

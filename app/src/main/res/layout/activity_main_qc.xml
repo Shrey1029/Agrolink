@@ -1,90 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:padding="16dp"
+    android:gravity="center">
 
-    <!-- Header section -->
+    <!-- ImageView to display the selected image -->
+    <ImageView
+        android:id="@+id/product_image"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:scaleType="centerInside"
+        android:background="@drawable/button_background"
+        android:contentDescription="Product Image" />
 
-    <!-- Main Content -->
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- TextView to show the result -->
+    <TextView
+        android:id="@+id/quality"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:gravity="center_vertical"
-        android:padding="16dp">
+        android:layout_marginTop="16dp"
+        android:text="Quality: "
+        android:textSize="18sp"
+        android:textColor="@color/textPrimary" />
 
-        <!-- Menu icon -->
-        <ImageView
-            android:id="@+id/return_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="start"
-            android:contentDescription="Menu Icon"
-            android:src="@drawable/ic_return" />
+    <!-- Button to open the camera -->
+    <Button
+        android:id="@+id/camera_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Camera"
+        android:layout_marginTop="16dp" />
 
-        <!-- Search icon -->
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:gravity="center_horizontal">
-
-            <!-- Product Image -->
-            <ImageView
-                android:id="@+id/product_image"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:background="@drawable/button_background"
-                android:padding="8dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/farm" />
-
-            <!-- Product Details -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="16dp"
-                android:padding="16dp"
-              >
-
-                <TextView
-                    android:id="@+id/category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint='Category=Gehu'
-                    android:textColor="@color/textPrimary"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/ratio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Ratio"
-                    android:textColor="@color/textSecondary"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/quality"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Quality"
-                    android:textColor="@color/textSecondary"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
+    <!-- Button to open the gallery -->
+    <Button
+        android:id="@+id/gallery_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Gallery"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.agrolink.databinding.ActivityMainProfileBinding
-import com.example.agrolink.mainConsumer.Profile.MainProfile
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -35,7 +34,10 @@ class MainProfileActivity : AppCompatActivity() {
 
         // Set click listener for Edit button
         binding.editProfileButton.setOnClickListener {
-            val intent = Intent(this, MainProfileActivity::class.java)
+            val intent = Intent(
+                this,
+                EditConsumerProfileActivity::class.java
+            ) // Navigate to Edit Profile Activity
             startActivityForResult(intent, EDIT_PROFILE_REQUEST_CODE)
         }
     }
@@ -43,7 +45,7 @@ class MainProfileActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == EDIT_PROFILE_REQUEST_CODE && resultCode == RESULT_OK) {
-            // Refresh profile data after returning from EditMainProfileActivity
+            // Refresh profile data after returning from EditConsumerProfileActivity
             fetchProfileData()
         }
     }
@@ -55,10 +57,13 @@ class MainProfileActivity : AppCompatActivity() {
                 if (document.exists()) {
                     val profile = document.toObject(MainProfile::class.java)
                     Log.d("MainProfileActivity", "Fetched profile data: $profile")
+
                     binding.consumerName.text = "Name: ${profile?.name ?: "N/A"}"
+                    binding.consumerAge.text = "Age: ${profile?.age ?: "N/A"}"  // No need to convert if age is a String
                     binding.Email.text = "Email: ${profile?.email ?: "N/A"}"
                     binding.Location.text = "Location: ${profile?.location ?: "N/A"}"
                     binding.Phone.text = "Phone: ${profile?.phone ?: "N/A"}"
+                    binding.address.text = "Address: ${profile?.address ?: "N/A"}"
 
                     // Load profile image
                     val imageUrl = profile?.imageUrl
@@ -79,4 +84,6 @@ class MainProfileActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error fetching data", Toast.LENGTH_SHORT).show()
             }
     }
+
+
 }

@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 
 class AddImage : AppCompatActivity() {
 
@@ -57,6 +58,13 @@ class AddImage : AppCompatActivity() {
     }
 
     private fun uploadProduct() {
+        val currentUser = FirebaseAuth.getInstance().currentUser // Get current authenticated user
+        if (currentUser == null) {
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val userId = currentUser.uid // Get the user's unique ID
         val productName = binding.Name.text.toString().trim()
         val stock = binding.stock.text.toString().trim()
         val price = binding.price.text.toString().trim()
@@ -76,31 +84,23 @@ class AddImage : AppCompatActivity() {
                     storageRef.downloadUrl.addOnSuccessListener { uri ->
                         val imageUrl = uri.toString()
 
-                        // Log the image URL
-                        Log.d("AddImage", "Image URL: $imageUrl")
-
                         val productData = hashMapOf(
                             "productName" to productName,
                             "stock" to stock,
                             "price" to price,
                             "imageUrl" to imageUrl,
-                            "description" to description
+                            "description" to description,
+                            "userId" to userId // Associate product with user
                         )
 
-                        // Upload the product data to Firestore and get the product ID
                         firestore.collection("products")
                             .add(productData)
                             .addOnSuccessListener { documentReference ->
-                                val productId = documentReference.id // Retrieve the productId here
-                                Log.d(
-                                    "AddImage",
-                                    "Product successfully uploaded with ID: $productId"
-                                )
+                                val productId = documentReference.id
                                 Toast.makeText(this, "Product Uploaded", Toast.LENGTH_SHORT).show()
-                                finish() // Finish the activity after success
+                                finish()
                             }
                             .addOnFailureListener { e ->
-                                Log.e("AddImage", "Failed to upload product: ${e.message}")
                                 Toast.makeText(
                                     this,
                                     "Failed to upload: ${e.message}",
@@ -110,7 +110,6 @@ class AddImage : AppCompatActivity() {
                     }
                 }
                 .addOnFailureListener { e ->
-                    Log.e("AddImage", "Image upload failed: ${e.message}")
                     Toast.makeText(this, "Image Upload Failed: ${e.message}", Toast.LENGTH_SHORT)
                         .show()
                 }

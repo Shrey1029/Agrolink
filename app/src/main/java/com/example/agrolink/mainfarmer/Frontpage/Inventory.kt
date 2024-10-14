@@ -10,6 +10,7 @@ import com.example.agrolink.databinding.ActivityInventory2Binding
 import com.google.firebase.firestore.FirebaseFirestore
 import android.util.Log
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 
 class Inventory : AppCompatActivity() {
 
@@ -30,7 +31,7 @@ class Inventory : AppCompatActivity() {
             intent.putExtra("PRODUCT_ID", product.productID) // Pass product ID
             startActivity(intent)
         }
-        binding.returnIcon.setOnClickListener{
+        binding.returnIcon.setOnClickListener {
             finish()
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
@@ -46,24 +47,33 @@ class Inventory : AppCompatActivity() {
     }
 
     private fun fetchProducts() {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser == null) {
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val userId = currentUser.uid
+
         firestore.collection("products")
+            .whereEqualTo("userId", userId) // Filter products by the current user's ID
             .get()
             .addOnSuccessListener { documents ->
-                productList.clear() // Clear the list to avoid duplication
+                productList.clear()
                 for (document in documents) {
                     val productName = document.getString("productName") ?: ""
                     val stock = document.getString("stock") ?: ""
                     val price = document.getString("price") ?: ""
                     val imageUrl = document.getString("imageUrl") ?: ""
                     val description = document.getString("description") ?: ""
-                    val productID = document.id // Get the document ID as the product ID
-                    val product = Product(productName, stock, price, imageUrl, description, productID)
+                    val productID = document.id
+                    val product =
+                        Product(productName, stock, price, imageUrl, description, productID)
                     productList.add(product)
                 }
                 adapter.notifyDataSetChanged()
             }
             .addOnFailureListener { e ->
-                Log.e("Inventory", "Error fetching products: ${e.message}")
                 Toast.makeText(this, "Error fetching products", Toast.LENGTH_SHORT).show()
             }
     }
