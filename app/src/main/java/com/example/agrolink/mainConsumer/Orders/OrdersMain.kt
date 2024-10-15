@@ -2,6 +2,7 @@ package com.example.agrolink.mainConsumer.Orders
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -75,13 +76,25 @@ class OrdersMain : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 cropList.clear()
                 for (document in result) {
-                    val crop = document.toObject(Crop::class.java)
+                    val crop = Crop(
+                        id = document.id,  // Assign Firestore document ID to Crop ID
+                        productName = document.getString("productName") ?: "",
+                        price = document.getString("price") ?: "",
+                        description = document.getString("description") ?: "",
+                        stock = document.getString("stock") ?: "",
+                        imageUrl = document.getString("imageUrl") ?: "",
+                        farmerProfileImageUrl = document.getString("farmerProfileImageUrl") ?: "",
+                        userId = document.getString("userId") ?: ""
+                    )
                     cropList.add(crop)
+
+                    // Log for debugging
+                    Log.d("CropData", "Loaded Crop ID: ${crop.id}, Name: ${crop.productName}")
                 }
                 cropAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
-                exception.printStackTrace()
+                Log.e("LoadCrops", "Error loading crops: ${exception.message}")
             }
     }
 

@@ -73,7 +73,7 @@ class CropAdapter(
                 if (quantity.isNotEmpty() && quantity.toIntOrNull() != null && quantity.toInt() > 0) {
                     val order = Order(
                         orderId = UUID.randomUUID().toString(),
-                        cropId = crop.id,
+                        cropId = crop.id,  // Ensure crop.id is filled
                         farmerId = crop.userId, // Use the farmer's userId from the crop
                         quantity = quantity,
                         consumerId = consumerId,

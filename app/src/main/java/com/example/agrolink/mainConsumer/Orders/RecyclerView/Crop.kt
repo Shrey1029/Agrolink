@@ -1,7 +1,7 @@
 package com.example.agrolink.mainConsumer.Orders.RecyclerView
 
 data class Crop(
-    val id: String = "",
+    val id: String = "", // This will be used as the cropId
     val productName: String = "",
     val price: String = "",
     val description: String = "",
@@ -10,3 +10,4 @@ data class Crop(
     val farmerProfileImageUrl: String = "", // URL of the farmer's profile image
     val userId: String = "" // Farmer's user ID
 )
+

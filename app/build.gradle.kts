@@ -75,6 +75,9 @@ dependencies {
     implementation("org.tensorflow:tensorflow-lite-metadata:0.1.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
     // TensorFlow Lite dependencies
     implementation("org.tensorflow:tensorflow-lite:2.14.0")

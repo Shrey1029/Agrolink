@@ -36,56 +36,38 @@ class OrdersMainF : AppCompatActivity() {
         binding.farmerOrdersRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.farmerOrdersRecyclerView.adapter = ordersAdapter
 
-        // Load orders for this farmer from Firestore
-        loadOrdersForFarmer(farmerId)
+        // Load orders from Firestore
+        loadOrdersForFarmer()
     }
 
-    private fun loadOrdersForFarmer(farmerId: String) {
-        firestore.collection("farmers_orders").document(farmerId)
-            .collection("orders")
+    private fun loadOrdersForFarmer() {
+        // Correctly querying the farmers_orders collection
+        firestore.collection("farmers_orders")
+            .whereEqualTo("farmerId", farmerId) // Filter by farmerId
             .addSnapshotListener { snapshots, e ->
                 if (e != null) {
-                    Log.e("LoadOrders", "Error loading orders: ${e.localizedMessage}")
                     Toast.makeText(this, "Error loading orders: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Log.e("Firestore", "Error: ${e.message}")
                     return@addSnapshotListener
                 }
 
-                // Clear the list before adding new data
-                ordersList.clear()
-
-                snapshots?.documents?.forEach { document ->
-                    val orderData = document.data
-                    if (orderData != null) {
-                        val order = Order(
-                            orderId = document.id,
-                            cropId = orderData["cropId"] as? String ?: "",
-                            consumerId = orderData["consumerId"] as? String ?: "",
-                            quantity = orderData["quantity"] as? String ?: "",
-                            amount = (orderData["amount"] as? Number)?.toDouble() ?: 0.0,
-                            status = orderData["status"] as? String ?: "Pending"
-                        )
-                        fetchConsumerDetails(order)
-                    } else {
-                        Log.e("LoadOrders", "No data found for document: ${document.id}")
+                if (snapshots != null && !snapshots.isEmpty) {
+                    ordersList.clear()
+                    for (document in snapshots.documents) {
+                        val order = document.toObject(Order::class.java)
+                        if (order != null) {
+                            ordersList.add(order)
+                        } else {
+                            Log.e("Firestore", "Invalid order data: ${document.id}")
+                        }
                     }
-                }
-            }
-    }
-
-    private fun fetchConsumerDetails(order: Order) {
-        firestore.collection("consumers").document(order.consumerId).get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    order.consumerName = document.getString("name") ?: "Unknown"
-                    order.consumerPhone = document.getString("phone") ?: "N/A"
-                    ordersList.add(order) // Add the order to the list
-                    ordersAdapter.notifyDataSetChanged() // Notify adapter of data changes
+                    ordersAdapter.notifyDataSetChanged()
                 } else {
-                    Log.e("FetchConsumer", "No such consumer with ID: ${order.consumerId}")
+                    Log.d("Firestore", "No orders found")
+                    Toast.makeText(this, "No orders found", Toast.LENGTH_SHORT).show()
                 }
-            }
-            .addOnFailureListener { exception ->
-                Log.e("FetchConsumer", "Error fetching consumer details: ${exception.localizedMessage}")
             }
     }
 }
+
+

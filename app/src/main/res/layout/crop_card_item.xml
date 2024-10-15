@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
@@ -54,33 +55,24 @@
             android:hint="Stock"
             android:textSize="14sp" />
 
-        <LinearLayout
-            android:layout_width="378dp"
-            android:layout_height="107dp"
-            android:layout_gravity="end"
-            android:gravity="end"
-            android:orientation="horizontal">
+        <Button
+            android:id="@+id/orderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:text="Order"
+            app:iconGravity="start|textStart" />
 
-            <Button
-                android:id="@+id/orderButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="8dp"
-                android:text="Order" />
-
-            <ImageView
-                android:id="@+id/farmerProfileImage"
-                android:layout_width="86dp"
-                android:layout_height="93dp"
-                android:layout_gravity="clip_vertical|fill_vertical"
-                android:layout_marginLeft="200dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/button_background"
-                android:contentDescription="Farmer Profile Picture"
-                android:scaleType="centerCrop" />
-
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/farmerProfileImage"
+            android:layout_width="86dp"
+            android:layout_height="93dp"
+            android:layout_gravity="clip_vertical|fill_vertical"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_background"
+            android:contentDescription="Farmer Profile Picture"
+            android:scaleType="centerCrop" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

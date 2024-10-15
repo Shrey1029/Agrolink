@@ -5,9 +5,9 @@ data class Order(
     val cropId: String = "",
     val farmerId: String = "",
     val consumerId: String = "",
-    var consumerName: String = "",
-    var consumerPhone: String = "",
-    var quantity: String = "", // Store quantity as a String
-    var amount: Double = 0.0, // Store amount as a Double
+    val consumerName: String = "",
+    val consumerPhone: String = "",
+    var quantity: String = "", // Keep this as a String if you want to store it as such
+    var amount: Double = 0.0, // Change this to Double for calculations
     val status: String = "Pending" // Order status can be "Pending", "Accepted", "Rejected", etc.
 )

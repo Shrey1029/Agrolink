@@ -1,6 +1,7 @@
 package com.example.agrolink.mainfarmer.orders
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +10,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agrolink.R
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.database.FirebaseDatabase
 
-class FarmerOrdersAdapter(private val context: Context, private val ordersList: MutableList<Order>) :
+class FarmerOrdersAdapter(private val context: Context, private val ordersList: List<Order>) :
     RecyclerView.Adapter<FarmerOrdersAdapter.OrderViewHolder>() {
-
-    private val firestore = FirebaseFirestore.getInstance()
 
     class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val consumerName: TextView = itemView.findViewById(R.id.consumerName)
@@ -38,7 +37,7 @@ class FarmerOrdersAdapter(private val context: Context, private val ordersList: 
         // Bind order details to the view
         holder.consumerName.text = order.consumerName
         holder.consumerPhone.text = "Phone: ${order.consumerPhone}"
-        holder.cropName.text = "Crop: ${order.cropId}"
+        holder.cropName.text = "Crop: ${order.cropId}" // Change to crop name if available
         holder.orderQuantity.text = "Quantity: ${order.quantity}"
         holder.orderAmount.text = "Total Amount: ₹${order.amount}"
         holder.orderStatus.text = "Status: ${order.status}"
@@ -56,13 +55,16 @@ class FarmerOrdersAdapter(private val context: Context, private val ordersList: 
     override fun getItemCount(): Int = ordersList.size
 
     private fun updateOrderStatus(order: Order, newStatus: String) {
-        firestore.collection("farmers_orders").document(order.farmerId)
-            .collection("orders").document(order.orderId).update("status", newStatus)
+        val databaseReference = FirebaseDatabase.getInstance()
+            .getReference("farmers_orders/${order.farmerId}/orders/${order.orderId}")
+
+        databaseReference.child("status").setValue(newStatus)
             .addOnSuccessListener {
                 Toast.makeText(context, "Order $newStatus", Toast.LENGTH_SHORT).show()
             }
-            .addOnFailureListener {
-                Toast.makeText(context, "Failed to update status. Please try again.", Toast.LENGTH_SHORT).show()
+            .addOnFailureListener { e ->
+                Toast.makeText(context, "Failed to update status: ${e.message}", Toast.LENGTH_SHORT).show()
+                Log.e("OrderUpdate", "Error updating status: ${e.message}")
             }
     }
 }
