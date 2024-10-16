@@ -24,18 +24,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Farmer Name -->
     <ImageView
         android:id="@+id/farmerProfileImage"
         android:layout_width="117dp"
         android:layout_height="116dp"
+        android:layout_marginTop="72dp"
         android:contentDescription="Farmer Profile Picture"
         android:scaleType="centerCrop"
         android:src="@drawable/placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="95dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Farmer Name -->
     <TextView
         android:id="@+id/farmerName"
         android:layout_width="wrap_content"
