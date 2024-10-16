@@ -1,43 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
-    android:gravity="center">
+    android:background="?android:attr/windowBackground">
 
-    <!-- ImageView to display the selected image -->
+    <!-- Product Image -->
     <ImageView
         android:id="@+id/product_image"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:scaleType="centerInside"
-        android:background="@drawable/button_background"
-        android:contentDescription="Product Image" />
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Product Image"
+        android:background="@drawable/image_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- TextView to show the result -->
+    <!-- Quality TextView -->
     <TextView
         android:id="@+id/quality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Quality: "
         android:textSize="18sp"
-        android:textColor="@color/textPrimary" />
+        android:layout_marginTop="16dp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/product_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Button to open the camera -->
+    <!-- Camera Button -->
     <Button
         android:id="@+id/camera_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Open Camera"
-        android:layout_marginTop="16dp" />
+        android:backgroundTint="?attr/colorPrimary"
+        android:textColor="?android:attr/textColorPrimaryInverse"
+        app:layout_constraintTop_toBottomOf="@id/quality"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Button to open the gallery -->
+    <!-- Gallery Button -->
     <Button
         android:id="@+id/gallery_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Open Gallery"
-        android:layout_marginTop="16dp" />
-</LinearLayout>
+        android:backgroundTint="?attr/colorPrimary"
+        android:textColor="?android:attr/textColorPrimaryInverse"
+        app:layout_constraintTop_toBottomOf="@id/camera_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

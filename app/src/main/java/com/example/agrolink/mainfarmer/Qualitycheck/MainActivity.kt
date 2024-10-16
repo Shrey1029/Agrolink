@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
         val probabilities = outputs.outputFeature0AsTensorBuffer.floatArray
 
         // Find the index with the highest probability
-        val maxIndex = probabilities.indices.maxByOrNull { probabilities[it] } ?: -1
+        val maxIndex = probabilities.indices.maxByOrNull { probabilities[it] } ?: 0
         val confidence = probabilities[maxIndex] * 100
 
         // Map the index to quality labels (only high and low)

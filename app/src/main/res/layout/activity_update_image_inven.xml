@@ -76,7 +76,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:hint="Stock"
+            android:hint="Stock (In Kg)"
             android:inputType="text" />
 
         <EditText
