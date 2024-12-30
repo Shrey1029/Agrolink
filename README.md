@@ -1,5 +1,3 @@
-Project Overview
-AgroLink is an app aimed at connecting farmers with consumers, facilitating various services such as product inventory management, order tracking, weather updates, and more. The app is designed to serve two primary user roles: Farmers and Consumers.
 
 Key Features and Components
 1. Authentication
