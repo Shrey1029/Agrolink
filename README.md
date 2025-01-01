@@ -12,7 +12,7 @@ Home Page:
 Displays two main options: Farmer and Consumer.
 Depending on the selection, the user is directed to either a farmer's dashboard or a consumer's front page.
 
-Farmer Dashboard:
+4. Farmer Dashboard:
 Inventory: Farmers can manage their products, including adding, updating, and deleting items.
 Orders: A section where farmers can track orders placed by consumers.
 Weather: Provides weather updates, which are important for farmers to plan their activities.
