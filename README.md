@@ -1,4 +1,4 @@
-Key Features and Components
+-Key Features and Components
 
 1. Authentication
 Login System:
